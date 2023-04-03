@@ -10,6 +10,25 @@ public class ApoliceSeguro {
 	private Seguradora seguradora;
 	
 	private BemSegurado bemSegurado;
+	
+	/* Construtor
+	 * - Toda apólice gerada no sistema precisa de todos os seus atributos populados sempre
+	 * - Nenhuma apólice pode ser gerada para um contrato cancelado*/
+	public ApoliceSeguro(int numeroApolice, String tipoApolice, Contrato contrato, Seguradora seguradora, BemSegurado bemSegurado) {
+		if(contrato.getStatus() != "Cancelado") {
+			this.numeroApolice = numeroApolice;
+			this.tipoApolice = tipoApolice;
+			this.seguradora = seguradora;
+			this.bemSegurado = bemSegurado;			
+		}else
+			System.out.println("Uma apólice não pode ser gerada para um contrato cancelado.");
+	}
+	
+	public void registrarSinistro(int cnpjSolicitante) {
+		if(cnpjSolicitante == contrato.getCliente().getCnpj()) {
+			System.out.println("Sinistro registrado. Em breve entraremos em contato para decidir os próximos passos.");
+		}
+	}
 
 	public ApoliceSeguro buscarApolice(int numeroApolice) {
 		return null;
