@@ -9,7 +9,7 @@ public class Contrato {
 	
 	private String status = "Cadastrado";
 	
-	private LocalDate dtAssinatura; //Dado imutável, definido uma vez na assinatura do contrato, e nunca é alterado
+	private LocalDate dtAssinatura;
 	
 	private LocalDate dtFimVigencia;
 
