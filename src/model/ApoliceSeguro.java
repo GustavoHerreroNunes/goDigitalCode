@@ -3,6 +3,9 @@ package model;
 import java.time.LocalDateTime;
 import java.time.LocalDate;
 
+/**
+ * Classe que representa uma apolice de seguro vinculada a um contrato, uma seguradora e um bem segurado.
+ */
 public class ApoliceSeguro {
 
 	private int numeroApolice;
@@ -15,9 +18,14 @@ public class ApoliceSeguro {
 	
 	private BemSegurado bemSegurado;
 	
-	/* Construtor
-	 * - Toda apólice gerada no sistema precisa de todos os seus atributos populados sempre
-	 * - Nenhuma apólice pode ser gerada para um contrato cancelado*/
+	/**
+	 * Construtor da classe ApoliceSeguro que recebe os dados da apolice e verifica se o contrato esta valido.
+	 * @param numeroApolice o numero da apolice
+	 * @param tipoApolice o tipo da apolice
+	 * @param contrato o contrato associado a apolice
+	 * @param seguradora a seguradora responsavel pela apolice
+	 * @param bemSegurado o bem segurado pela apolice
+	 */
 	public ApoliceSeguro(int numeroApolice, String tipoApolice, Contrato contrato, Seguradora seguradora, BemSegurado bemSegurado) {
 		if(contrato.getStatus() != "Cancelado") {
 			this.contrato = contrato;
@@ -29,9 +37,12 @@ public class ApoliceSeguro {
 			System.out.println("Uma apólice não pode ser gerada para um contrato cancelado.");
 	}
 	
-	/* Registrar Sinistro
-	 * - Apenas o cliente signatário do contrato pode resgistrar um sinistro a ele relacionado
-	 * - Código base, no futuro faria uma chamada a classe DAO correspondente*/
+	/**
+	 * Metodo que registra um sinistro para a apolice se o solicitante for o cliente do contrato.
+	 * @param cnpjSolicitante o CNPJ do solicitante do sinistro
+	 * @param dtOcorrencia a data e hora da ocorrencia do sinistro
+	 * @return um objeto Sinistro se o registro for bem sucedido, ou null caso contrario
+	 */
 	public Sinistro registrarSinistro(int cnpjSolicitante, LocalDateTime dtOcorrencia) {
 		if(cnpjSolicitante == contrato.getCliente().getCnpj()) {
 			Sinistro sinistro = new Sinistro(1, this, dtOcorrencia);
@@ -42,10 +53,11 @@ public class ApoliceSeguro {
 		return null;
 	}
 
-	/* Buscar Apólice
-	 * - Por meio da classe ApoliceSeguro será possível buscar por seguros cadastrados
-	 * e obter um objeto correspondente
-	 * - Código base, no futuro faria uma chamada a classe DAO correspondente*/
+	/**
+	 * Método estatico que busca uma apolice de seguro pelo seu numero.
+	 * @param numeroApolice o numero da apolice a ser buscada
+	 * @return um objeto ApoliceSeguro se a busca for bem sucedida, ou null caso contrario
+	 */
 	public static ApoliceSeguro buscarApolice(int numeroApolice) {
 		
 		LocalDate dtVigencia = LocalDate.of(2024, 03, 22);

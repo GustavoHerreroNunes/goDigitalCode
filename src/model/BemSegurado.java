@@ -1,4 +1,8 @@
 package model;
+
+/**
+ * Classe que representa um bem segurado em uma apolice de seguro
+ */
 public class BemSegurado {
 
 	private String idItem;
@@ -9,8 +13,10 @@ public class BemSegurado {
 
 	private ApoliceSeguro apoliceSeguro;
 	
-	/* Construtor
-	 * - Todo contrato precisa ter um id do item*/	
+	/**
+     * Construtor da classe BemSegurado
+     * @param idItem código de identificacao do item segurado
+     */
 	public BemSegurado(String idItem) {
 		this.idItem = idItem;
 	}

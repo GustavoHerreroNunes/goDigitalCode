@@ -2,9 +2,9 @@ package view;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import model.ApoliceSeguro;
 import model.Cliente;
 import model.Contrato;
-import model.ApoliceSeguro;
 import model.Sinistro;
 
 public class ViewTesteApoliceSinistro {
