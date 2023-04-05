@@ -1,4 +1,4 @@
-package com.fiap.br.login;
+package com.fiap.br.keycloak;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

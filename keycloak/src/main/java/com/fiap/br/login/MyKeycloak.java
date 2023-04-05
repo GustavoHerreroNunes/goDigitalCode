@@ -1,4 +1,4 @@
-package com.fiap.br.login;
+package com.fiap.br.keycloak;
 
 import org.keycloak.admin.client.Keycloak;
 import org.keycloak.admin.client.KeycloakBuilder;
